@@ -1,0 +1,172 @@
+{
+  "start": {
+    "text": "You awaken in a mystical forest. Two paths lie ahead.",
+    "choices": [
+      { "text": "Take the left path", "next": "left_path" },
+      { "text": "Take the right path", "next": "right_path" }
+    ]
+  },
+  "left_path": {
+    "text": "You find a talking tree who offers you a Magic Acorn.",
+    "choices": [
+      { "text": "Accept the gift", "next": "tree_reward", "item": "Magic Acorn" },
+      { "text": "Decline politely", "next": "decline_tree" }
+    ]
+  },
+  "tree_reward": {
+    "text": "The acorn glows brightly. You gain +10 health.",
+    "effects": { "health": 10 },
+    "choices": [
+      { "text": "Continue deeper into the forest", "next": "mystic_lake" }
+    ]
+  },
+  "decline_tree": {
+    "text": "The tree nods. A hidden path opens.",
+    "choices": [
+      { "text": "Enter the path", "next": "mystic_lake" }
+    ]
+  },
+  "right_path": {
+    "text": "You stumble into a goblin camp. They notice you.",
+    "choices": [
+      { "text": "Run away", "next": "escape_goblins", "effects": { "health": -5 } },
+      { "text": "Fight", "next": "fight_goblins" }
+    ]
+  },
+  "escape_goblins": {
+    "text": "You barely escape with a few scratches. (-5 health)",
+    "choices": [
+      { "text": "Hide in nearby ruins", "next": "ruins" }
+    ]
+  },
+  "fight_goblins": {
+    "text": "You bravely fight. You defeat them and find 10 gold!",
+    "effects": { "gold": 10 },
+    "choices": [
+      { "text": "Search the camp", "next": "goblin_loot" }
+    ]
+  },
+  "goblin_loot": {
+    "text": "You find a healing potion.",
+    "choices": [
+      { "text": "Take it", "next": "ruins", "item": "Healing Potion" }
+    ]
+  },
+  "ruins": {
+    "text": "The ruins contain a glowing portal and an old merchant.",
+    "choices": [
+      { "text": "Enter the portal", "next": "level_two" },
+      { "text": "Talk to the merchant", "next": "shop" }
+    ]
+  },
+  "shop": {
+    "text": "Merchant: 'Buy something, adventurer!'",
+    "shop": true,
+    "items": [
+      { "name": "Health Potion", "price": 5, "effect": { "health": 15 } },
+      { "name": "Torch", "price": 3 }
+    ],
+    "choices": [
+      { "text": "Enter the portal", "next": "level_two" }
+    ]
+  },
+  "mystic_lake": {
+    "text": "You reach a glowing lake. A spirit offers guidance.",
+    "choices": [
+      { "text": "Accept the spirit’s help", "next": "level_two" },
+      { "text": "Go your own way", "next": "level_two" }
+    ]
+  },
+  "level_two": {
+    "text": "Level 2: The Shadow Caverns. It's dark and filled with whispers.",
+    "choices": [
+      { "text": "Light a torch", "next": "lit_path", "requireItem": "Torch" },
+      { "text": "Walk blindly", "next": "dark_path" }
+    ]
+  },
+  "lit_path": {
+    "text": "With the torch lit, you see traps and avoid them. You find a glowing rune.",
+    "item": "Cavern Rune",
+    "choices": [
+      { "text": "Take the rune", "next": "deep_cave" }
+    ]
+  },
+  "dark_path": {
+    "text": "You trip over rocks and lose health.",
+    "effects": { "health": -10 },
+    "choices": [
+      { "text": "Keep going", "next": "deep_cave" }
+    ]
+  },
+  "deep_cave": {
+    "text": "You reach a fork. A goblin boss blocks the left path.",
+    "choices": [
+      { "text": "Fight the goblin boss", "next": "boss_fight" },
+      { "text": "Take the right path quietly", "next": "hidden_chamber" }
+    ]
+  },
+  "boss_fight": {
+    "text": "The Goblin Boss growls. Prepare for battle!",
+    "combat": {
+      "enemy": "Goblin Boss",
+      "health": 30,
+      "attack": 8,
+      "reward": {
+        "gold": 15,
+        "item": "Goblin Key"
+      }
+    },
+    "choices": []
+  },
+  "hidden_chamber": {
+    "text": "You discover a sealed door with a rune-shaped slot.",
+    "choices": [
+      { "text": "Use Cavern Rune", "next": "unlock_mountain_pass", "requireItem": "Cavern Rune" },
+      { "text": "Turn back", "next": "deep_cave" }
+    ]
+  },
+  "unlock_mountain_pass": {
+    "text": "The door opens. A cool breeze welcomes you to the mountain pass.",
+    "choices": [
+      { "text": "Enter the mountain pass", "next": "level_three" }
+    ]
+  },
+  "level_three": {
+    "text": "Level 3: Mountain Pass. The sky darkens. You spot a distant castle.",
+    "choices": [
+      { "text": "Hike toward the castle", "next": "castle_gate" },
+      { "text": "Search for a cave nearby", "next": "mountain_cave" }
+    ]
+  },
+  "mountain_cave": {
+    "text": "You find a healing spring inside and restore your health.",
+    "effects": { "health": 100 },
+    "choices": [
+      { "text": "Head to the castle", "next": "castle_gate" }
+    ]
+  },
+  "castle_gate": {
+    "text": "You arrive at the castle gate. It's locked.",
+    "choices": [
+      { "text": "Use Goblin Key", "next": "final_level", "requireItem": "Goblin Key" },
+      { "text": "Knock", "next": "guard_encounter" }
+    ]
+  },
+  "guard_encounter": {
+    "text": "A ghostly guard blocks the way. You must prove your worth.",
+    "choices": [
+      { "text": "Offer Magic Acorn", "next": "final_level", "requireItem": "Magic Acorn" },
+      { "text": "Retreat to find another way", "next": "level_three" }
+    ]
+  },
+  "final_level": {
+    "text": "Final Level: The Dream King's Throne Room. He awaits your arrival.",
+    "choices": [
+      { "text": "Confront the Dream King", "next": "ending" }
+    ]
+  },
+  "ending": {
+    "text": "You defeat the Dream King with wit and strength. Peace returns to the realm. You are a hero!",
+    "choices": []
+  }
+}
