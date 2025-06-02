@@ -32,12 +32,17 @@ Magical UI with animated backgrounds, smooth transitions (via Framer Motion), an
 
 🛠️ Tech Stack
 
-1.React for UI and state management
-2.React Router for page navigation
-3.Tailwind CSS for styling
-4.Framer Motion for animations
-5.localStorage for saving game state
-6.Custom JSON structure for story and world data
+1.React for UI and state management.
+
+2.React Router for page navigation.
+
+3.Tailwind CSS for styling.
+
+4.Framer Motion for animations.
+
+5.localStorage for saving game state.
+
+6.Custom JSON structure for story and world data.
 
 
 
